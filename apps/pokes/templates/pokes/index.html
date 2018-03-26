@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login and Registration</title>
+</head>
+
+<body>
+   <div class="container" >
+     
+          {% if messages %}
+          {% for message in messages%}
+        <p class="error"style="color:red">{{message}}</p>
+                {% endfor%}
+            {% endif %}
+       
+       <div class="col-sm-4">
+           <h2>Login</h2>
+           <form action="/login" method="post">
+            {%csrf_token %}
+            <div>
+                <label>Username:</label>
+                <input type="text" name="username" class="form-control"><br>
+                <label>Password:</label>
+                <input type="password" name="password" class="form-control"><br>
+            </div>
+            <div>
+                <button type="submit" class="btn btn-primary">Login</button><br>
+                <br>
+                <a class="nav-link" href="index2">Not a member? Sign up here</a>
+            </div>
+        </form>
+       </div>
+   </div>
+
+    
+</body>
+</html>

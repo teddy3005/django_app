@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login and Registration</title>
+</head>
+
+<body>
+   <div class="container">
+       <div class="col-sm-4">
+           <h2> Register</h2>
+           <form action="/register" method ="post">
+            {%csrf_token %}
+            <div>
+                <label>Name:</label>
+                <input type="text" name="name" class="form-control"><br>
+            </div>
+            <div>
+                <label>User Name:</label>
+                <input type="text" name="username" class="form-control"><br>
+            </div>
+            <div>
+                <label>Password:</label>
+                <input type="password" name="password" class="form-control"><br>
+            </div>
+            <div>
+                <label>Confirm Password:</label>
+                <input type="password" name="confirmpassword" class="form-control"><br>
+            </div>
+            <div>
+                <label>Birthday:</label>
+                <input type="date" name="birthday" class="form-control"><br>
+            </div>
+            <div>
+                <button type="submit" class="btn btn-primary">Register</button>
+                <a class="nav-link" href="/">Return to Login</a>
+            </div>
+            </form>
+            {% if messages %}
+                {% for message in messages%}
+                  <p class="error"style="color:red">{{message}}</p>
+                {% endfor%}
+
+            {% endif %}
+       </div>
+     
+   </div>
+
+    
+</body>
+</html>

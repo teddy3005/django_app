@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Welcome</title>
+</head>
+<body>
+    <div class=header>
+            <h1>Welcome {{request.session.currentuser.name}}</h1>
+            <a class="nav-link" href="/logout">logout</a>
+    </div>
+    {% for total_poker in total_pokers %}
+    <p>{{total_poker.counter}} people poked you!</p>
+    {% endfor %}
+    
+    <div id="box">
+        {% for poke in my_pokes %}
+        <p>{{poke.sender.username}} gave you
+        {{poke.pokes}} pokes(s).</p>
+        {% endfor %}
+    </div>
+    <h5>People you may want to poke:</h5>
+		<table>
+			<tr>
+				<th>Name</th>
+				<th>username</th>
+				<th>Poke History</th>
+				<th>Action</th>
+            </tr>
+            {% for other_user in opokes %}
+			<tr>
+				<td>{{other_user.name}}</td>
+				<td>{{other_user.username}}</td>
+				<td>{{other_user.counter}}</td>
+				<td>
+					<form action="/poke_process" method="post">
+						{% csrf_token %}
+						<input type="hidden" name="receiver" value="{{other_user.id}}">
+						<input type="submit" value="Poke!">
+					</form>
+				</td>
+			</tr>
+			{% endfor %}
+		</table>
+                
+        
+
+
+</body>
+</html>
